@@ -1,0 +1,30 @@
+{
+  "name": "swig-i18n-abide",
+  "version": "0.1.0",
+  "description": "Swig translation tags for i18n-abide",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mila-labs/swig-i18n-abide.git"
+  },
+  "keywords": [
+    "swig",
+    "i18n",
+    "i18n-abide",
+    "swig-extensions",
+    "swig-tags"
+  ],
+  "author": "Michael Weibel <michael@mila.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mila-labs/swig-i18n-abide/issues"
+  },
+  "homepage": "https://github.com/mila-labs/swig-i18n-abide",
+  "peerDependencies": {
+    "swig": ">=1.3.2",
+    "i18n-abide": ">=0.0.17"
+  }
+}
