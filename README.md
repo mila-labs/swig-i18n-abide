@@ -20,6 +20,8 @@ require('swig-i18n-abide')(swig);
 ```javascript
 // single line translations
 {% trans "I'll be translated" %}
+// single line translations with replacements
+{% trans "String %(foobar)s with string replacements" %}
 
 // multiline translations with replacements and maybe html
 {% blocktrans with name=name url=url %}

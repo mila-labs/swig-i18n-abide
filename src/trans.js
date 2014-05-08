@@ -2,6 +2,7 @@
  * Translate tag
  *
  * {% trans "String to be translated" %}
+ * {% trans "String %(foobar)s with string replacements" %}
  *
  * Copyright 2014 Mila
  * Author: Michael Weibel <michael@mila.com>
@@ -25,7 +26,7 @@ exports.parse = function parseTrans(str, line, parser, types, options) {
 
 exports.compile = function compileTrans(compiler, args, content, parents, options, blockName) {
 	var str = args.shift();
-	return util.format('_output += _ctx.gettext(%s);', str);
+	return util.format('_output += _ctx.gettext(%s, _ctx);', str);
 };
 
 exports.ends = false;
