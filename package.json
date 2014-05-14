@@ -1,6 +1,6 @@
 {
   "name": "swig-i18n-abide",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Swig translation tags for i18n-abide",
   "main": "index.js",
   "scripts": {

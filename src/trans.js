@@ -9,10 +9,14 @@
  */
 'use strict';
 
-var util = require('util');
+var util = require('util')
+	, throwError = require('swig/lib/utils').throwError;
 
 exports.parse = function parseTrans(str, line, parser, types, options) {
 	parser.on(types.STRING, function parseTransToken(token) {
+		if(token.match.length <= 2) {
+			throwError("Non-empty string expected", line, parser.filename);
+		}
 		this.out.push(token.match);
 		return false;
 	});
