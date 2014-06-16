@@ -12,6 +12,8 @@
 var util = require('util')
 	, throwError = require('swig/lib/utils').throwError;
 
+var FIND_PARAMS_REGEX = /%\(\s*([^)]+)\s*\)s/g;
+
 exports.parse = function parseTrans(str, line, parser, types, options) {
 	parser.on(types.STRING, function parseTransToken(token) {
 		if(token.match.length <= 2) {
@@ -29,8 +31,14 @@ exports.parse = function parseTrans(str, line, parser, types, options) {
 };
 
 exports.compile = function compileTrans(compiler, args, content, parents, options, blockName) {
-	var str = args.shift();
-	return util.format('_output += _ctx.gettext(%s, _ctx);', str);
+	var str = args.shift()
+		, params = []
+		, match = [];
+	while((match = FIND_PARAMS_REGEX.exec(str)) !== null) {
+		var ctxToken = match[1];
+		params.push('"' + ctxToken + '": _filters.escape(_ctx["' + ctxToken + '"])');
+	}
+	return util.format('_output += _ctx.format(_ctx.gettext(%s), {' + params.join(',') + '});', str);
 };
 
 exports.ends = false;
